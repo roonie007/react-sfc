@@ -1,0 +1,45 @@
+<template>
+  <div>
+    <h2>Categories</h2>
+    <ul>
+      <li $for={category in categories} key={category.name}>
+        <strong>{category.name}</strong>
+        <ul>
+          <li $for={item in category.items} key={item.name}>
+            <span $if={item.isAvailable}>{item.name}</span>
+            <span $if={!item.isAvailable} class="not-available">{item.name}</span>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script>
+const categories = [
+  {
+    name: 'Fruits',
+    items: [
+      { name: 'Apple', isAvailable: true },
+      { name: 'Banana', isAvailable: false },
+    ],
+  },
+  {
+    name: 'Vegetables',
+    items: [
+      { name: 'Carrot', isAvailable: true },
+      { name: 'Broccoli', isAvailable: true },
+    ],
+  },
+];
+</script>
+
+<style>
+h2 {
+  color: #333;
+}
+
+.not-available {
+  text-decoration: line-through;
+}
+</style> 
