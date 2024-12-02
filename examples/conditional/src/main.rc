@@ -1,0 +1,15 @@
+<template>
+  <StrictMode>
+    <Counter />
+  </StrictMode>
+</template>
+
+
+<script>
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import Counter from "./Counter.rc";
+
+createRoot(document.getElementById("root")).render(/**__REACT_SFC_APP__**/);
+</script>
+ 

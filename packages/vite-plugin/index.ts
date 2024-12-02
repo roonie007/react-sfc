@@ -1,6 +1,11 @@
 import { pascalCase } from "case-anything";
 import type { PluginOption } from "vite";
 import * as babel from "@babel/core";
+import * as babelParser from "@babel/parser";
+import * as recast from "recast";
+import { namedTypes as n, builders as b } from "ast-types";
+
+import * as ts from "recast/parsers/babel-ts";
 
 const templateRegex = /<template>([\s\S]*?)<\/template>/gim;
 const scriptRegex = /<script(?:\s+lang="[^"]*")?>([\s\S]*?)<\/script>/gim;
@@ -63,6 +68,8 @@ export default function reactSFC(): PluginOption {
        * Script
        */
 
+      // Process the template to handle $if attributes
+
       if (script.includes("/**__REACT_SFC_APP__**/")) {
         finalCode = `
 import React from "react";
@@ -97,6 +104,8 @@ export default ${componentName};
         `;
       }
 
+      finalCode = processTemplate(finalCode);
+
       console.debug("---------------------------------------------------");
       console.debug("---------------------------------------------------");
       console.debug("---------------------------------------------------");
@@ -125,6 +134,62 @@ export default ${componentName};
     },
   };
 }
+
+export const processTemplate = (template: string): string => {
+  const ast = recast.parse(template, { parser: ts });
+
+  recast.visit(ast, {
+    visitJSXElement(path) {
+      this.traverse(path);
+
+      const node = path.node;
+
+      // Find $if attribute
+      const ifAttrIndex = node.openingElement.attributes?.findIndex(
+        (attr) => n.JSXAttribute.check(attr) && attr.name.name === "$if"
+      );
+
+      if (ifAttrIndex !== undefined && ifAttrIndex >= 0) {
+        // Found $if attribute
+        const ifAttr = node.openingElement.attributes?.[
+          ifAttrIndex
+        ] as n.JSXAttribute;
+
+        // Get the condition expression
+        let conditionExpression: n.Expression;
+
+        if (n.JSXExpressionContainer.check(ifAttr.value)) {
+          conditionExpression = ifAttr.value.expression as n.Expression;
+        } else if (n.StringLiteral.check(ifAttr.value)) {
+          conditionExpression = b.stringLiteral(ifAttr.value.value);
+        } else {
+          throw new Error("Invalid $if attribute value");
+        }
+
+        // Remove the $if attribute
+        node.openingElement.attributes?.splice(ifAttrIndex, 1);
+
+        // Wrap the element in a conditional expression
+        const conditionalExpression = b.jsxExpressionContainer(
+          b.logicalExpression("&&", conditionExpression, node)
+        );
+
+        // Replace the current node with the conditional expression
+        path.replace(conditionalExpression);
+      }
+
+      // No need to traverse further; we already did at the beginning
+      return false;
+    },
+  });
+
+  const transformedCode = recast.print(ast).code;
+
+  // Remove the outer fragment
+  const codeWithoutFragment = transformedCode.replace(/^<>|<\/>$/g, "");
+
+  return codeWithoutFragment;
+};
 
 export const extractTemplates = (code: string) => {
   const templates = code.matchAll(templateRegex);

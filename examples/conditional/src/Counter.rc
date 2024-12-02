@@ -1,0 +1,33 @@
+<template>
+  <h1>React</h1>
+  <div class="card">
+    <button onClick={() => setCount((count) => count + 1)}>
+      count is {count}
+    </button>
+  </div>
+  <span $if={count === 1}> count is 1 </span>
+  <span $if={count === 2}> count is 2 </span>
+  <span $if={count === 3}> count is 3 </span>
+  <span $if={count > 3}>
+    count is greater than 3 <br />
+
+    <span $if={count > 5}>
+      {"** - "}count is greater than 5 - nested of 3  <br />
+
+      <span $if={count > 7}>
+        {"**** - "}count is greater than 7 - nested of 5  <br />
+
+        <span $if={count > 9}>
+          {"****** - "}count is greater than 9 - nested of 7  <br />
+        </span>
+      </span>
+    </span>
+  </span>
+</template>
+
+
+<script lang="ts">
+import { useState } from "react";
+
+const [count, setCount] = useState<number>(0);
+</script>
