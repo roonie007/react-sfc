@@ -1,0 +1,31 @@
+<template>
+  <h1>React</h1>
+  <div class="card">
+    <button onClick={() => setCount((count) => count + 1)}>
+      count is {count}
+    </button>
+    <span $if={count === 1}> this is 1</span>
+    <span $else-if={count === 2}> this is 2</span>
+    <span $else> this is NOT 1</span>
+  </div>
+  <div>
+    <br />
+    <span $for={char in ['a', 'b', 'c']} key={char}>
+      this is { char } <br/>
+    </span>
+</div>
+</template>
+
+<script>
+import { useState } from "react";
+
+const [count, setCount] = useState(0);
+</script>
+
+<style>
+.card {
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid #333;
+}
+</style>

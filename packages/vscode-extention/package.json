@@ -1,0 +1,62 @@
+{
+  "name": "react-sfc",
+  "displayName": "React SFC",
+  "description": "Syntax highlighting for Single File Components (SFC) for react with embedded scripts and styles.",
+  "version": "0.0.1",
+  "publisher": "roonie007",
+  "repository": {
+    "url": "https://github.com/roonie007/react-sfc"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "icon": "images/icon.png",
+  "extensionDependencies": [
+    "vscode.typescript-language-features",
+    "vscode.javascript-language-features",
+    "vscode.css-language-features"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "react-sfc",
+        "aliases": [
+          "React SFC",
+          "react-sfc"
+        ],
+        "extensions": [
+          ".rc"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "dark": "images/icon.png",
+          "light": "images/icon.png"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "react-sfc",
+        "scopeName": "source.react-sfc",
+        "path": "./syntaxes/react-sfc.tmLanguage.json",
+        "embeddedLanguages": {
+          "text.html.derivative": "html",
+          "source.css": "css",
+          "source.css.scss": "scss",
+          "source.css.less": "less",
+          "source.sass": "sass",
+          "source.stylus": "stylus",
+          "source.postcss": "postcss",
+          "source.js": "javascript",
+          "source.ts": "typescript",
+          "source.js.jsx": "javascriptreact",
+          "source.tsx": "typescriptreact"
+        }
+      }
+    ]
+  }
+}
