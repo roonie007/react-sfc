@@ -1,0 +1,16 @@
+{
+  "folders": [
+    {
+      "name": "react-rfc",
+      "path": "../"
+    },
+    {
+      "name": "vscode",
+      "path": "../packages/vscode-extention"
+    },
+    {
+      "name": "vite-plugin",
+      "path": "../packages/vite-plugin"
+    }
+  ]
+}

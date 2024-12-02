@@ -1,0 +1,22 @@
+<template>
+  <h1>React</h1>
+  <div class="card">
+    <button onClick={() => setCount((count) => count + 1)}>
+      count is {count}
+    </button>
+  </div>
+</template>
+
+<script lang="ts">
+import { useState } from "react";
+
+const [count, setCount] = useState<number>(0);
+</script>
+
+<style>
+.card {
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid #333;
+}
+</style>

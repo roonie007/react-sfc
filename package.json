@@ -1,0 +1,10 @@
+{
+  "name": "react-sfc",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.7.0"
+  }
+}

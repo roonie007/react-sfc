@@ -1,0 +1,15 @@
+<template>
+  <StrictMode>
+    <App />
+  </StrictMode>
+</template>
+
+
+<script>
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./component.jsv";
+
+createRoot(document.getElementById("root")).render(/**__REACT_SFC_APP__**/);
+</script>
+ 
