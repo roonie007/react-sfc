@@ -8,8 +8,7 @@ Single File Components (SFC) for react, inspired by Vue/Svelte SFC, but for Reac
 </p>
 
 <p align="center">
-  <img src="
-  https://github.com/roonie007/react-sfc/raw/refs/heads/main/images/demo.jpg" alt="react rfc demo" />
+  <img src="https://github.com/roonie007/react-sfc/blob/main/images/demo.jpg?raw=true" alt="react rfc demo" />
 </p>
 
 ## Why React SFC?
