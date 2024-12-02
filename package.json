@@ -2,9 +2,14 @@
   "name": "react-sfc",
   "type": "module",
   "devDependencies": {
+    "@types/babel__core": "^7.20.5",
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.7.0"
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.25.9",
+    "@babel/preset-typescript": "^7.26.0"
   }
 }

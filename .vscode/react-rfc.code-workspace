@@ -11,6 +11,10 @@
     {
       "name": "vite-plugin",
       "path": "../packages/vite-plugin"
+    },
+    {
+      "name": "examples",
+      "path": "../examples"
     }
   ]
 }

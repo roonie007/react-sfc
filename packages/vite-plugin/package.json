@@ -1,0 +1,19 @@
+{
+  "name": "vite-plugin-react-sfc",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "@babel/preset-typescript": "^7.26.0",
+    "case-anything": "^3.1.0",
+    "magic-string": "^0.30.14",
+    "vite": "6"
+  }
+}

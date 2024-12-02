@@ -7,10 +7,23 @@
   </div>
 </template>
 
+<template>
+  {/* This is a separate template, but it will be rendered in the same component */}
+  <span> {count} - 10 = {count - 10} </span>
+</template>
+
 <script lang="ts">
 import { useState } from "react";
 
-const [count, setCount] = useState<number>(0);
+const [count, setCount] = useState<number>(10);
+</script>
+
+<script>
+import { useEffect } from "react";
+
+useEffect(() => {
+  console.log('counter', count);
+}, [count]);
 </script>
 
 <style>
@@ -18,5 +31,11 @@ const [count, setCount] = useState<number>(0);
   padding: 20px;
   margin: 20px;
   border: 1px solid #333;
+}
+</style>
+
+<style lang="scss">
+h1 {
+  color: red;
 }
 </style>
