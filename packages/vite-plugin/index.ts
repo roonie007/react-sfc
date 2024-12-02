@@ -140,22 +140,90 @@ export const processTemplate = (template: string): string => {
 
   recast.visit(ast, {
     visitJSXElement(path) {
+      // First, traverse into the children
       this.traverse(path);
 
       const node = path.node;
 
-      // Find $if attribute
+      // Handle $for attribute
+      const forAttrIndex = node.openingElement.attributes?.findIndex(
+        (attr) => n.JSXAttribute.check(attr) && attr.name.name === "$for"
+      );
+
+      if (forAttrIndex !== undefined && forAttrIndex >= 0) {
+        // Found $for attribute
+        const forAttr = node.openingElement.attributes?.[
+          forAttrIndex
+        ] as n.JSXAttribute;
+
+        // Extract the iterator expression (e.g., "item in items")
+        let iteratorExpression: string;
+
+        if (n.JSXExpressionContainer.check(forAttr.value)) {
+          if (
+            n.BinaryExpression.check(forAttr.value.expression) &&
+            forAttr.value.expression.operator === "in"
+          ) {
+            iteratorExpression = recast.print(forAttr.value.expression).code;
+          } else {
+            throw new Error(
+              "Invalid $for attribute value. Expected format: item in items"
+            );
+          }
+        } else if (n.StringLiteral.check(forAttr.value)) {
+          iteratorExpression = forAttr.value.value;
+        } else {
+          throw new Error("Invalid $for attribute value");
+        }
+
+        // Remove the $for attribute
+        node.openingElement.attributes?.splice(forAttrIndex, 1);
+
+        // Parse the iterator expression to get item and items
+        const [item, items] = iteratorExpression
+          .split(/\s+in\s+/)
+          .map((s) => s.trim());
+
+        if (!item || !items) {
+          throw new Error(
+            "Invalid $for attribute format. Expected 'item in items'"
+          );
+        }
+
+        // Create the map function
+        const mapFunction = b.arrowFunctionExpression(
+          [b.identifier(item)],
+          // @ts-expect-error - The types are incorrect
+          node
+        );
+
+        // Build the map expression: items.map(item => node)
+        const mapExpression = b.callExpression(
+          b.memberExpression(b.identifier(items), b.identifier("map")),
+          [mapFunction]
+        );
+
+        // Wrap the map expression in a JSX expression container
+        const jsxExpression = b.jsxExpressionContainer(mapExpression);
+
+        // Replace the current node with the map expression
+        path.replace(jsxExpression);
+
+        // No need to traverse further; we already did at the beginning
+        return false;
+      }
+
+      // Existing $if handling
       const ifAttrIndex = node.openingElement.attributes?.findIndex(
         (attr) => n.JSXAttribute.check(attr) && attr.name.name === "$if"
       );
 
       if (ifAttrIndex !== undefined && ifAttrIndex >= 0) {
-        // Found $if attribute
+        // Handle $if attribute as before
         const ifAttr = node.openingElement.attributes?.[
           ifAttrIndex
         ] as n.JSXAttribute;
 
-        // Get the condition expression
         let conditionExpression: n.Expression;
 
         if (n.JSXExpressionContainer.check(ifAttr.value)) {
@@ -171,11 +239,15 @@ export const processTemplate = (template: string): string => {
 
         // Wrap the element in a conditional expression
         const conditionalExpression = b.jsxExpressionContainer(
+          // @ts-expect-error - The types are incorrect
           b.logicalExpression("&&", conditionExpression, node)
         );
 
         // Replace the current node with the conditional expression
         path.replace(conditionalExpression);
+
+        // No need to traverse further; we already did at the beginning
+        return false;
       }
 
       // No need to traverse further; we already did at the beginning
