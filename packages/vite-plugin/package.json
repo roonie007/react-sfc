@@ -1,7 +1,24 @@
 {
   "name": "vite-plugin-react-sfc",
-  "module": "index.ts",
+  "description": "Vite plugin for React SFC",
+  "module": "dist/index.js",
   "type": "module",
+  "version": "0.0.1",
+  "author": {
+    "name": "Mouadh HSOUMI",
+    "email": "hsmouadh@gmail.com",
+    "url": "https://github.com/roonie007"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roonie007/react-sfc"
+  },
+  "bugs": {
+    "url": "https://github.com/roonie007/react-sfc/issues"
+  },
+  "scripts": {
+    "build": "bun build index.ts  --outdir=dist"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -14,8 +31,13 @@
     "@babel/preset-typescript": "^7.26.0",
     "ast-types": "^0.14.2",
     "case-anything": "^3.1.0",
-    "magic-string": "^0.30.14",
     "recast": "^0.23.9",
     "vite": "6"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
   }
 }
