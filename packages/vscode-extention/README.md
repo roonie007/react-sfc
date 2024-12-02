@@ -16,3 +16,7 @@ The extension is still in development, and for the moment it only highlights the
 ### 0.0.1
 
 - Initial release of React SFC with basic highlighting for Template, Script and Style blocks
+
+### 0.0.2
+
+- Fix: Demo picture in README.md
