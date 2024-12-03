@@ -3,7 +3,7 @@
   "description": "Vite plugin for React SFC",
   "module": "dist/index.js",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": {
     "name": "Mouadh HSOUMI",
     "email": "hsmouadh@gmail.com",
