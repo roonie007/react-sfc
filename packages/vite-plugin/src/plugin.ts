@@ -19,12 +19,31 @@ export default function reactSFC(): PluginOption {
 
   return {
     name: "vite:react-sfc",
+    config(conf) {
+      return {
+        resolve: {
+          extensions: [...(conf.resolve?.extensions || []), ".rc"],
+        },
+      };
+    },
+    configureServer(server) {
+      // Add middleware to set the correct Content-Type
+      server.middlewares.use((req, res, next) => {
+        if (
+          req.url &&
+          (req.url.endsWith(".rc") || req.url.includes(".rc?import"))
+        ) {
+          res.setHeader("Content-Type", "text/javascript");
+        }
+        next();
+      });
+    },
     resolveId(id) {
       if (id.startsWith("virtual:")) {
         return "\0" + id;
       }
 
-      return id;
+      return null;
     },
     load(id) {
       const moduleId = id.replace("\0", "");
