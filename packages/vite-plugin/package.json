@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/roonie007/react-sfc"
+    "url": "git+https://github.com/roonie007/react-sfc.git"
   },
   "bugs": {
     "url": "https://github.com/roonie007/react-sfc/issues"
