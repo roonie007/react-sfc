@@ -190,6 +190,10 @@ button {
 </style>
 ```
 
+## VS Code Extension
+
+For a better development experience, you can install the [React SFC VS Code extension](https://marketplace.visualstudio.com/items?itemName=roonie007.react-sfc) to get syntax highlighting and snippets for React SFC files, I know it's not perfect, but it's a start.
+
 > Note: To use preprocessors, ensure you have the corresponding module installed, see the [Vite documentation](https://vitejs.dev/guide/features.html#css-pre-processors) for more information.
 
 ## Limitations
