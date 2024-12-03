@@ -44,5 +44,17 @@
   },
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "vite",
+    "plugin",
+    "react",
+    "sfc",
+    "single",
+    "file",
+    "component",
+    "typescript",
+    "jsx",
+    "tsx"
   ]
 }
