@@ -4,7 +4,7 @@ Single File Components (SFC) for react with embedded scripts and styles, inspire
 
 <p align="center">
   <img src="
-  https://github.com/roonie007/react-sfc/raw/refs/heads/main/packages/vscode-extention/images/demo.jpg" alt="react rfc demo" />
+  https://github.com/roonie007/react-sfc/raw/refs/heads/main/packages/vscode-extention/images/demo.jpg" alt="react sfc vscode extension demo" />
 </p>
 
 ## Known Issues
