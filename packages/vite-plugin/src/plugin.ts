@@ -5,7 +5,7 @@ import * as babelParser from "@babel/parser";
 import * as recast from "recast";
 import { namedTypes as n, builders as b } from "ast-types";
 
-import * as ts from "recast/parsers/babel-ts";
+import * as ts from "recast/parsers/babel-ts.js";
 
 const templateRegex = /<template>([\s\S]*?)<\/template>/gim;
 const scriptRegex = /<script(?:\s+lang="[^"]*")?>([\s\S]*?)<\/script>/gim;

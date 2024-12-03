@@ -3,7 +3,7 @@
   "description": "Vite plugin for React SFC",
   "module": "dist/index.js",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "author": {
     "name": "Mouadh HSOUMI",
     "email": "hsmouadh@gmail.com",
@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.26.0",
+    "@babel/parser": "^7.26.2",
     "@babel/preset-react": "^7.25.9",
     "@babel/preset-typescript": "^7.26.0",
     "ast-types": "^0.14.2",
