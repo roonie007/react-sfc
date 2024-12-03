@@ -106,11 +106,11 @@ export default ${componentName};
 
       finalCode = processTemplate(finalCode);
 
-      console.debug("---------------------------------------------------");
-      console.debug("---------------------------------------------------");
-      console.debug("---------------------------------------------------");
-      console.debug(id);
-      console.debug(finalCode);
+      // console.debug("---------------------------------------------------");
+      // console.debug("---------------------------------------------------");
+      // console.debug("---------------------------------------------------");
+      // console.debug(id);
+      // console.debug(finalCode);
 
       const plugins = [];
       if (scriptLang === "ts") {
