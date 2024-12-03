@@ -17,7 +17,9 @@
     "url": "https://github.com/roonie007/react-sfc/issues"
   },
   "scripts": {
-    "build": "bun build index.ts  --outdir=dist"
+    "compile": "tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json ./tsconfig.types.json",
+    "build:clean": "rm -rf ./dist",
+    "build": "bun run build:clean compile && bun run compile"
   },
   "devDependencies": {
     "@types/bun": "latest"
@@ -36,8 +38,8 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
     }
   }
 }
