@@ -3,13 +3,16 @@
   "type": "module",
   "devDependencies": {
     "@types/babel__core": "^7.20.5",
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "prettier": "^3.4.2"
   },
   "peerDependencies": {
     "typescript": "^5.7.0"
   },
   "dependencies": {
     "@babel/preset-react": "^7.25.9",
-    "@babel/preset-typescript": "^7.26.0"
+    "@babel/preset-typescript": "^7.26.0",
+    "es-module-lexer": "^1.5.4",
+    "magic-string": "^0.30.14"
   }
 }
