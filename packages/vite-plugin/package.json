@@ -29,17 +29,9 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@babel/core": "^7.26.0",
-    "@babel/generator": "^7.26.2",
-    "@babel/parser": "^7.26.2",
-    "@babel/preset-react": "^7.25.9",
-    "@babel/preset-typescript": "^7.26.0",
-    "ast-types": "^0.14.2",
-    "case-anything": "^3.1.0",
-    "escodegen": "^2.1.0",
+    "magic-string": "^0.30.14",
     "oxc-parser": "^0.38.0",
     "oxc-transform": "^0.38.0",
-    "recast": "^0.23.9",
     "vite": "6"
   },
   "exports": {
