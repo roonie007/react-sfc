@@ -52,7 +52,7 @@ To get started with React SFC, you need to install the plugin and configure it i
 
 Here's an example of a React SFC component:
 
-````svelte
+```svelte
 <template>
   <div>
     <h1>Counter</h1>
@@ -74,6 +74,7 @@ button {
   font-size: 16px;
 }
 </style>
+```
 
 ## Installation
 
@@ -81,7 +82,7 @@ First, install the plugin as a development dependency:
 
 ```bash
 npm install --save-dev vite-plugin-react-sfc
-````
+```
 
 Or with Yarn/Bun:
 
@@ -155,7 +156,7 @@ Example:
 
 ### Script Block
 
-You can write your component logic in the <script> block. Use the lang attribute to specify the scripting language:
+You can write your component logic in the `<script>` block. Use the lang attribute to specify the scripting language:
 
 - `lang="ts"` for TypeScript.
 - `lang="js"` for JavaScript. (default if lang is omitted)
