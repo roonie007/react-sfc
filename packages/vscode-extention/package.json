@@ -2,7 +2,7 @@
   "name": "react-sfc",
   "displayName": "React SFC",
   "description": "Syntax highlighting for Single File Components (SFC) for react with embedded scripts and styles.",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "publisher": "roonie007",
   "repository": {
     "url": "https://github.com/roonie007/react-sfc"
@@ -29,7 +29,8 @@
           "react-sfc"
         ],
         "extensions": [
-          ".rc"
+          ".rc",
+          ".react"
         ],
         "configuration": "./language-configuration.json",
         "icon": {

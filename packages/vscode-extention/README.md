@@ -13,6 +13,10 @@ The extension is still in development, and for the moment it only highlights the
 
 ## Release Notes
 
+### 0.1.0
+
+- Support `.react` file extension for React Single File Components
+
 ### 0.0.1
 
 - Initial release of React SFC with basic highlighting for Template, Script and Style blocks
