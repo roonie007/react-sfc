@@ -15,11 +15,11 @@ Single File Components (SFC) for react, inspired by Vue/Svelte SFC, but for Reac
 
 React SFC is a Vite plugin that enables you to define React components using a single file format, similar to Vue and Svelte Single File Components (SFC). This makes it easier to organize your components and reduces the boilerplate code required to set up a React component.
 
-With React SFC, you can define your component's template, logic, and styles in a single `.rc` file. This allows you to keep your codebase clean and maintainable, with a familiar syntax that is easy to read and understand.
+With React SFC, you can define your component's template, logic, and styles in a single `.react` file. This allows you to keep your codebase clean and maintainable, with a familiar syntax that is easy to read and understand.
 
 ## Why React SFC? **NO BS** version
 
-I’ve been using React for 4 years ( day to day job ). I love **React**, I love **the ecosystem**, I love **the community**. But JSX? OH, JSX MAKES ME WANT TO PUNCH A WALL. IT MAKES ME SICK. I HATE IT WITH EVERY FIBER OF MY BEING. EVERYTHING IS A FUCKING MESS. JavaScript shoved into my HTML. HTML puked into my JavaScript AAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHH.
+I’ve been using React for 4 years ( day to day job ). I love **React**, I love **the ecosystem**, I love **the community**. But JSX? OH, JSX MAKES ME WANT TO PUNCH A WALL. IT MAKES ME SICK. I HATE IT WITH EVERY FIBER OF MY BEING. EVERYTHING IS A FUCKING MESS. JavaScript shoved into my HTML. HTML puked into my JavaScript AAAAAHHHHH.
 
 And don’t even get me started on the FUCKING **_className_**. WHY?! Why can’t I just use class like a normal, sane person? Oh no, JSX has to be “special.” It has to remind me on every line that I’m trapped in its twisted logic. “Oh, you wanted to style this? Sorry, class is a reserved keyword. Here, take this bastardized, verbose nonsense instead!”
 
@@ -33,7 +33,7 @@ So I snapped. I built this vite plugin a single-file component (SFC) for React i
 
 Sorry for the rant. I just really hate JSX, let's get back to business, here are some features of React SFC:
 
-- **Single File Components**: Define your component's template, logic, and styles in a single `.rc` file.
+- **Single File Components**: Define your component's template, logic, and styles in a single `.react` file.
 - **Familiar Syntax**: Inspired by Vue & Svelte SFCs, making it easy for developers familiar with Vue and Svelte to get started.
 - **Custom Directives**:
   - `$if`: Simplify conditional rendering in your templates.
@@ -46,7 +46,7 @@ Sorry for the rant. I just really hate JSX, let's get back to business, here are
 
 ## Getting Started
 
-To get started with React SFC, you need to install the plugin and configure it in your Vite project. Once set up, you can start creating components using the `.rc` file extension.
+To get started with React SFC, you need to install the plugin and configure it in your Vite project. Once set up, you can start creating components using the `.react` file extension.
 
 ### Example Component
 
@@ -100,8 +100,8 @@ pnpm add --save-dev vite-plugin-react-sfc
 Add the plugin to your Vite configuration:
 
 ```js
-import { defineConfig } from "vite";
-import reactSFC from "vite-plugin-react-sfc";
+import { defineConfig } from 'vite';
+import reactSFC from 'vite-plugin-react-sfc';
 
 export default defineConfig({
   plugins: [
@@ -111,7 +111,7 @@ export default defineConfig({
 });
 ```
 
-Now, you can start creating .rc files in your project.
+Now, you can start creating .react files in your project.
 
 ## Template Syntax
 
@@ -164,7 +164,7 @@ Example:
 
 ```vue
 <script lang="ts">
-import { useState } from "react";
+import { useState } from 'react';
 
 const [count, setCount] = useState<number>(0);
 </script>
@@ -198,7 +198,7 @@ For a better development experience, you can install the [React SFC VS Code exte
 
 ## Limitations
 
-- Only Supports .rc Files: The plugin processes files with the .rc extension. Ensure your components use this extension.
+- Only Supports .react Files: The plugin processes files with the .react extension. Ensure your components use this extension.
 - Custom Directives: Only $if and $for directives are supported at this time.
 - No Scoped Styles: Styles are global. Scoped styles are not yet implemented.
 - Limited Error Handling: Syntax errors in your templates may lead to build-time errors. Ensure your templates are valid.
